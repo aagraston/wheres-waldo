@@ -1,8 +1,18 @@
 import React from 'react'
-import { route, link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+
+import ImagePage from '../pages/ImagePage'
+import ImageSelectionPage from '../pages/ImageSelectionPage'
+import ScoreBoardPage from '../pages/ScoreBoardPage'
 
 function App() {
-  return <Route path="/img01" />
+  return (
+    <Routes>
+      <Route path="/" element={<ImageSelectionPage />} />
+      <Route path="image" element={<ImagePage />} />
+      <Route path="score" element={<ScoreBoardPage />} />
+    </Routes>
+  )
 }
 
 export default App
