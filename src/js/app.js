@@ -1,16 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { route, link } from 'react-router-dom'
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-
-  render() {
-    const { stateObjects } = this.state
-
-    return <div>hey peoples</div>
-  }
+function App() {
+  return <Route path="/img01" />
 }
 
 export default App
