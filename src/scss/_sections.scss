@@ -3,6 +3,16 @@
   border-radius: $border-radius-standard;
 }
 
+#root {
+  margin-top: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+}
+
 .image-selection-container {
   display: flex;
   flex-direction: row;
@@ -16,18 +26,26 @@
 
   .image-selection-card {
     @extend %generic-card;
-    max-height: 30rem;
+    max-height: 20rem;
     flex-basis: 20%;
     overflow: hidden;
 
-    //flex for image
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     .image-selection-image {
-      object-fit: cover;
+      //flex for image
+
+      img {
+        width: 650%;
+        transition: width 0.2s;
+
+        &:hover {
+          width: 700%;
+        }
+      }
     }
   }
 }

@@ -9,13 +9,14 @@ function ImageSelectionPage() {
   const imgArray = [image01, image02, image03, image04]
 
   return (
-    <div>
-      <h1>Image Selector</h1>
+    <div className="image-selection-page-container">
+      <h1>Where's Waldo?</h1>
+      <p>Select an image to play!</p>
       <div className="image-selection-container">
         {imgArray.map((img) => (
           <div className="image-selection-card">
             <div className="image-selection-image">
-              <img src={img} width="900px" />
+              <img src={img} />
             </div>
           </div>
         ))}
