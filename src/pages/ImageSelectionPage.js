@@ -15,7 +15,7 @@ function ImageSelectionPage() {
         {imgArray.map((img) => (
           <div className="image-selection-card">
             <div className="image-selection-image">
-              <img src={img} />
+              <img src={img} width="900px" />
             </div>
           </div>
         ))}
