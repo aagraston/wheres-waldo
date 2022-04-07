@@ -6,9 +6,16 @@ import ImageSelectionPage from '../pages/ImageSelectionPage'
 import ScoreBoardPage from '../pages/ScoreBoardPage'
 
 function App() {
+  const selectImage = (choice) => {
+    console.log(choice)
+  }
+
   return (
     <Routes>
-      <Route path="/" element={<ImageSelectionPage />} />
+      <Route
+        path="/"
+        element={<ImageSelectionPage selectImage={selectImage} />}
+      />
       <Route path="image" element={<ImagePage />} />
       <Route path="score" element={<ScoreBoardPage />} />
     </Routes>
