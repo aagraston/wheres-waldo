@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import image01 from '../imgs/img01.jpg'
@@ -14,6 +14,8 @@ function App() {
   const imgArray = [image01, image02, image03, image04]
   const imgObjArray = []
 
+  const [curImage, setCurImage] = useState({})
+
   imgArray.forEach((e, index) => {
     const imageObj = {
       image: e,
@@ -22,10 +24,17 @@ function App() {
     imgObjArray.push(imageObj)
   })
 
-  console.log(imgObjArray)
+  const findImageObj = (id) => {
+    return imgObjArray.filter((obj) => {
+      return obj.id === id
+    })
+  }
 
   const selectImage = (choice) => {
-    console.log(choice)
+    const setToThis = findImageObj(choice)
+    if (setToThis !== undefined) {
+      setCurImage(setToThis)
+    }
   }
 
   return (
@@ -39,7 +48,7 @@ function App() {
           />
         }
       />
-      <Route path="image" element={<ImagePage />} />
+      <Route path="image" element={<ImagePage curImage={curImage} />} />
       <Route path="score" element={<ScoreBoardPage />} />
     </Routes>
   )
