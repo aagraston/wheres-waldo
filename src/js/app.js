@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useState, useEffect, useRef } from 'react'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 import image01 from '../imgs/img01.jpg'
 import image02 from '../imgs/img02.jpg'
@@ -11,6 +11,9 @@ import ImageSelectionPage from '../pages/ImageSelectionPage'
 import ScoreBoardPage from '../pages/ScoreBoardPage'
 
 function App() {
+  const navigate = useNavigate()
+  const firstMount = useRef(true)
+
   const imgArray = [image01, image02, image03, image04]
   const imgObjArray = []
 
@@ -36,6 +39,14 @@ function App() {
       setCurImage(setToThis)
     }
   }
+
+  useEffect(() => {
+    if (firstMount.current !== true) {
+      navigate('image')
+    } else {
+      firstMount.current = false
+    }
+  }, [curImage])
 
   return (
     <Routes>
