@@ -7,11 +7,27 @@ function ImagePage(props) {
     imgSrc = curImage[0].image
   }
 
+  const determinPoint = (e) => {
+    const targ = e.target
+    const clickX = e.clientX
+    const clickY = e.clientY
+    const boundingRect = targ.getBoundingClientRect()
+    const imgX = boundingRect.x
+    const imgY = boundingRect.y
+
+    const imgClickX = clickX - imgX
+    const imgClickY = clickY - imgY
+
+    console.log(`${imgClickX} ${imgClickY}`)
+
+    console.log(targ.getBoundingClientRect())
+  }
+
   return (
     <div className="image-page-container">
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
       <div className="image-page-image-container">
-        <img src={imgSrc} width="1500px" />
+        <img src={imgSrc} width="1500px" onClick={determinPoint} />
       </div>
     </div>
   )

@@ -14,7 +14,7 @@ function App() {
   const navigate = useNavigate()
   const firstMount = useRef(true)
 
-  const imgArray = [image01, image02, image03, image04]
+  const imgArray = [image01, image02, image03]
   const imgObjArray = []
 
   const [curImage, setCurImage] = useState({})
