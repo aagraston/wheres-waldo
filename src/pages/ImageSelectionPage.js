@@ -1,4 +1,5 @@
 import React from 'react'
+import uniqid from 'uniqid'
 
 function ImageSelectionPage(props) {
   const { selectImage, imgObjArray } = props
@@ -9,7 +10,7 @@ function ImageSelectionPage(props) {
       <p>Select an image to play!</p>
       <div className="image-selection-container">
         {imgObjArray.map((obj) => (
-          <div className="image-selection-card">
+          <div key={uniqid()} className="image-selection-card">
             <div className="image-selection-image">
               <img src={obj.image} onClick={selectImage.bind(this, obj.id)} />
             </div>
