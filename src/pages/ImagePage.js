@@ -10,9 +10,9 @@ function ImagePage(props) {
   }
 
   const dummyDat = [
-    { name: 'waldo', xloc: 251, yloc: 820.3 },
+    { name: 'Waldo', xloc: 251, yloc: 820.3 },
     {
-      name: 'wilma',
+      name: 'Wilma',
       xloc: 1135,
       yloc: 738.7,
     },
@@ -23,9 +23,16 @@ function ImagePage(props) {
     y: 0,
   }
 
-  const [imageClicked, setImageClicked] = useState(false)
-
   const errorMargin = 10
+
+  const [imageClicked, setImageClicked] = useState(false)
+  const [foundChars, setFoundChars] = useState([])
+
+  const allChars = []
+
+  dummyDat.forEach((dat) => {
+    allChars.push(dat.name)
+  })
 
   const determinePoint = (e) => {
     setImageClicked(true)
@@ -45,7 +52,7 @@ function ImagePage(props) {
       y: imgClickY,
     }
 
-    checkForFound('waldo')
+    checkForFound('Waldo')
 
     console.log(`${imgClickX} ${imgClickY}`)
   }
@@ -73,7 +80,12 @@ function ImagePage(props) {
 
   return (
     <div className="image-page-container">
-      <CharSelector />
+      <CharSelector
+        allChars={allChars}
+        imageClicked={imageClicked}
+        checkForFound={checkForFound}
+        foundChars={foundChars}
+      />
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
       <div className="image-page-image-container">
         <img src={imgSrc} width="1500px" onClick={determinePoint} />
