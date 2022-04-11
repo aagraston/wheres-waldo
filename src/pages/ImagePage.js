@@ -7,6 +7,20 @@ function ImagePage(props) {
     imgSrc = curImage[0].image
   }
 
+  const dummyDat = [
+    { name: 'waldo', xloc: 252, yloc: 120.7 },
+    {
+      name: 'wilma',
+      xloc: 1135,
+      yloc: 738.7,
+    },
+  ]
+
+  let curClickedPoint = {
+    x: 0,
+    y: 0,
+  }
+
   const determinPoint = (e) => {
     const targ = e.target
     const clickX = e.clientX
@@ -18,9 +32,21 @@ function ImagePage(props) {
     const imgClickX = clickX - imgX
     const imgClickY = clickY - imgY
 
-    console.log(`${imgClickX} ${imgClickY}`)
+    curClickedPoint = {
+      x: imgClickX,
+      y: imgClickY,
+    }
 
-    console.log(targ.getBoundingClientRect())
+    console.log(`${imgClickX} ${imgClickY}`)
+  }
+
+  const checkForFound = (character, pointObject) => {
+    //check for selected character
+    const charDat = dummyDat.filter((obj) => {
+      obj.name === character
+    })
+    if (charDat !== undefined) {
+    }
   }
 
   return (
