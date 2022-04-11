@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 function CharSelector(props) {
-  const { allChars, imageClicked, checkForFound, foundChars } = props
+  const { allChars, selectorOpen, checkForFound, foundChars, clickedPoint } =
+    props
+
+  function showModal() {}
+
+  const [closeClass, setCloseClass] = useState('closed')
+  const [posStyles, setPosStyles] = useState({ top: 0 + 'px', left: 0 + 'px' })
+
+  useEffect(() => {
+    if (!selectorOpen) {
+      setCloseClass('')
+      setPosStyles({ top: clickedPoint.y + 'px', left: clickedPoint.x + 'px' })
+    }
+  }, [clickedPoint])
 
   const selectableChars = []
 
@@ -14,7 +27,7 @@ function CharSelector(props) {
   })
 
   return (
-    <div className="drop-down-container">
+    <div className={'drop-down-container' + ' ' + closeClass} style={posStyles}>
       {selectableChars.map((char) => (
         <div
           className="drop-down-selection"

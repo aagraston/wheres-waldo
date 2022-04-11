@@ -58,6 +58,7 @@
 //drop-down-business
 
 .drop-down-container {
+  position: absolute;
   width: 130px;
   padding: 10px;
 
@@ -66,6 +67,8 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+
+  overflow: hidden;
 
   &.closed {
     height: 0px;
