@@ -71,9 +71,9 @@ function ImagePage(props) {
         currentlyClicked.y > curChar.yloc - errorMargin &&
         currentlyClicked.y < curChar.yloc + errorMargin
       ) {
-        console.log('you found Waldo!')
+        console.log(`you found ${character}!`)
       } else {
-        console.log(`no, this is't waldo`)
+        console.log(`no, this is't ${character}`)
       }
     }
   }
