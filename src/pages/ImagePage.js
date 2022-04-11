@@ -8,7 +8,7 @@ function ImagePage(props) {
   }
 
   const dummyDat = [
-    { name: 'waldo', xloc: 252, yloc: 120.7 },
+    { name: 'waldo', xloc: 251, yloc: 820.3 },
     {
       name: 'wilma',
       xloc: 1135,
@@ -20,6 +20,8 @@ function ImagePage(props) {
     x: 0,
     y: 0,
   }
+
+  const errorMargin = 10
 
   const determinPoint = (e) => {
     const targ = e.target
@@ -37,15 +39,29 @@ function ImagePage(props) {
       y: imgClickY,
     }
 
+    checkForFound('waldo')
+
     console.log(`${imgClickX} ${imgClickY}`)
   }
 
-  const checkForFound = (character, pointObject) => {
+  const checkForFound = (character) => {
+    const currentlyClicked = curClickedPoint
     //check for selected character
     const charDat = dummyDat.filter((obj) => {
-      obj.name === character
+      return obj.name === character
     })
     if (charDat !== undefined) {
+      let curChar = charDat[0]
+      if (
+        currentlyClicked.x > curChar.xloc - errorMargin &&
+        currentlyClicked.x < curChar.xloc + errorMargin &&
+        currentlyClicked.y > curChar.yloc - errorMargin &&
+        currentlyClicked.y < curChar.yloc + errorMargin
+      ) {
+        console.log('you found Waldo!')
+      } else {
+        console.log(`no, this is't waldo`)
+      }
     }
   }
 
