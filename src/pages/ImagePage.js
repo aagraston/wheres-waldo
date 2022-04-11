@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CharSelector from '../components/CharSelector'
+
 function ImagePage(props) {
   const { curImage } = props
   let imgSrc = ''
@@ -21,9 +23,13 @@ function ImagePage(props) {
     y: 0,
   }
 
+  const [imageClicked, setImageClicked] = useState(false)
+
   const errorMargin = 10
 
-  const determinPoint = (e) => {
+  const determinePoint = (e) => {
+    setImageClicked(true)
+
     const targ = e.target
     const clickX = e.clientX
     const clickY = e.clientY
@@ -67,9 +73,10 @@ function ImagePage(props) {
 
   return (
     <div className="image-page-container">
+      <CharSelector />
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
       <div className="image-page-image-container">
-        <img src={imgSrc} width="1500px" onClick={determinPoint} />
+        <img src={imgSrc} width="1500px" onClick={determinePoint} />
       </div>
     </div>
   )
