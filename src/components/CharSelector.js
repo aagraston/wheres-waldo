@@ -21,6 +21,7 @@ function CharSelector(props) {
   const selectableChars = []
 
   allChars.forEach((char) => {
+    console.log(foundChars)
     if (!foundChars.includes(char)) {
       selectableChars.push(char)
     } else {

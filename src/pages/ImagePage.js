@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CharSelector from '../components/CharSelector'
 
 function ImagePage(props) {
@@ -85,6 +85,7 @@ function ImagePage(props) {
         currentlyClicked.y < curChar.yloc + errorMargin
       ) {
         console.log(`you found ${character}!`)
+        setFoundChars((prev) => prev.concat(character))
       } else {
         console.log(`no, this is't ${character}`)
       }
@@ -101,6 +102,11 @@ function ImagePage(props) {
         clickedPoint={curClickedPagePoint}
       />
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
+      <div className="foundList">
+        {foundChars.map((char) => (
+          <div>{char}</div>
+        ))}
+      </div>
       <div className="image-page-image-container">
         <img src={imgSrc} width="1500px" onClick={determinePoint} />
       </div>
