@@ -13,6 +13,8 @@ function CharSelector(props) {
     if (!selectorOpen) {
       setCloseClass('')
       setPosStyles({ top: clickedPoint.y + 'px', left: clickedPoint.x + 'px' })
+    } else {
+      setCloseClass('closed')
     }
   }, [clickedPoint])
 

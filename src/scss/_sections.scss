@@ -71,7 +71,8 @@
   overflow: hidden;
 
   &.closed {
-    height: 0px;
+    visibility: none;
+    display: none;
   }
 
   .drop-down-selection {

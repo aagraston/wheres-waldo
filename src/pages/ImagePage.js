@@ -23,9 +23,14 @@ function ImagePage(props) {
     y: 0,
   })
 
+  const [curClickedPagePoint, setClickedPagePoint] = useState({
+    x: 0,
+    y: 0,
+  })
+
   const errorMargin = 10
 
-  const [selectorOpen, toggleSelectorOpen] = useState(false)
+  const [selectorOpen, toggleSelectorOpen] = useState(true)
   const [foundChars, setFoundChars] = useState([])
 
   const allChars = []
@@ -38,6 +43,8 @@ function ImagePage(props) {
     const targ = e.target
     const clickX = e.clientX
     const clickY = e.clientY
+
+    setClickedPagePoint({ x: clickX, y: clickY })
     const boundingRect = targ.getBoundingClientRect()
     const imgX = boundingRect.x
     const imgY = boundingRect.y
@@ -50,9 +57,17 @@ function ImagePage(props) {
       y: imgClickY,
     })
 
-    checkForFound('Waldo')
+    toggleSelector()
 
     console.log(`${imgClickX} ${imgClickY}`)
+  }
+
+  function toggleSelector() {
+    if (selectorOpen) {
+      toggleSelectorOpen(false)
+    } else {
+      toggleSelectorOpen(true)
+    }
   }
 
   const checkForFound = (character) => {
@@ -83,7 +98,7 @@ function ImagePage(props) {
         selectorOpen={selectorOpen}
         checkForFound={checkForFound}
         foundChars={foundChars}
-        clickedPoint={curClickedPoint}
+        clickedPoint={curClickedPagePoint}
       />
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
       <div className="image-page-image-container">
