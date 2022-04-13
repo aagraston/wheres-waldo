@@ -102,7 +102,8 @@ function ImagePage(props) {
         clickedPoint={curClickedPagePoint}
       />
       <h1>Find Waldo, Odlaw and Wizard Whitebeard</h1>
-      <div className="foundList">
+      <div className="found-list">
+        <p>Characters Found:</p>
         {foundChars.map((char) => (
           <div>{char}</div>
         ))}
