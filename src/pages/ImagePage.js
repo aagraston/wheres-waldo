@@ -1,22 +1,14 @@
+import { connectFirestoreEmulator } from 'firebase/firestore'
 import React, { useState, useEffect } from 'react'
 import CharSelector from '../components/CharSelector'
 
 function ImagePage(props) {
-  const { curImage } = props
+  const { curImage, curData } = props
   let imgSrc = ''
 
   if (curImage[0] !== undefined) {
     imgSrc = curImage[0].image
   }
-
-  const dummyDat = [
-    { name: 'Waldo', xloc: 251, yloc: 820.3 },
-    {
-      name: 'Wilma',
-      xloc: 1135,
-      yloc: 738.7,
-    },
-  ]
 
   const [curClickedPoint, setClickedPoint] = useState({
     x: 0,
@@ -34,10 +26,13 @@ function ImagePage(props) {
   const [foundChars, setFoundChars] = useState([])
 
   const allChars = []
+  console.log(curData)
 
-  dummyDat.forEach((dat) => {
-    allChars.push(dat.name)
-  })
+  if (curData !== undefined) {
+    curData.data.forEach((dat) => {
+      allChars.push(dat.name)
+    })
+  }
 
   const determinePoint = (e) => {
     const targ = e.target
@@ -73,7 +68,7 @@ function ImagePage(props) {
   const checkForFound = (character) => {
     const currentlyClicked = curClickedPoint
     //check for selected character
-    const charDat = dummyDat.filter((obj) => {
+    const charDat = curData.data.filter((obj) => {
       return obj.name === character
     })
     if (charDat !== undefined) {
