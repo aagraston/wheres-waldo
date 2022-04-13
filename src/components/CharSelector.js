@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react'
 
 function CharSelector(props) {
-  const { allChars, selectorOpen, checkForFound, foundChars, clickedPoint } =
-    props
+  const {
+    allChars,
+    selectorOpen,
+    toggleSelectorOpen,
+    checkForFound,
+    foundChars,
+    clickedPoint,
+  } = props
 
   function showModal() {}
 
@@ -29,12 +35,18 @@ function CharSelector(props) {
     }
   })
 
+  function handleSelection(character) {
+    toggleSelectorOpen(true)
+    setCloseClass('closed')
+    checkForFound(character)
+  }
+
   return (
     <div className={'drop-down-container' + ' ' + closeClass} style={posStyles}>
       {selectableChars.map((char) => (
         <div
           className="drop-down-selection"
-          onClick={checkForFound.bind(this, char)}
+          onClick={handleSelection.bind(this, char)}
         >
           <p>{char}</p>
         </div>

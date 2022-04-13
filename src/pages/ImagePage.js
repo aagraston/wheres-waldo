@@ -97,6 +97,7 @@ function ImagePage(props) {
       <CharSelector
         allChars={allChars}
         selectorOpen={selectorOpen}
+        toggleSelectorOpen={toggleSelectorOpen}
         checkForFound={checkForFound}
         foundChars={foundChars}
         clickedPoint={curClickedPagePoint}
